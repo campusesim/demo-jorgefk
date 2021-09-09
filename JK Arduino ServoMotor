@@ -1,0 +1,35 @@
+#include <Servo.h>
+
+const int botonNucleo = 9;
+int botonNucleoState = 0;
+Servo servoNucleo;
+int pos = 0;
+
+void setup()
+{
+ Serial.begin(9600);
+  servoNucleo.attach(6);
+  pinMode (botonNucleo, INPUT );
+    
+}
+
+void loop(){
+	botonNucleoState = digitalRead(botonNucleo);
+	if (botonNucleoState == HIGH) 
+    {
+      for(pos = 0;pos >=80; pos -=20);
+      {servoNucleo.write(pos);
+       delay (15);}
+    }
+	else{
+      Serial.println("Algo salió mal");
+    }
+
+
+
+	if (botonNucleoState == HIGH)
+    {
+      Serial.println("Boton Funciona nashe");
+    }
+}
+      
